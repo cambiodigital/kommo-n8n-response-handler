@@ -1,0 +1,61 @@
+name: Publish widget package
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Package version (example: v1.0.1)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  PACKAGE_NAME: kommo-widget
+  OWNER_SCOPE: orgs
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: meta
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="${{ github.ref_name }}"
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "zip_name=custom-widget-${VERSION}.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Build widget zip
+        shell: bash
+        run: |
+          cd custom-widget
+          zip -r "../${{ steps.meta.outputs.zip_name }}" .
+
+      - name: Publish to GitHub Packages (generic)
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          VERSION: ${{ steps.meta.outputs.version }}
+          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+        run: |
+          curl --fail-with-body -L \
+            -X PUT \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Content-Type: application/zip" \
+            --data-binary @"${ZIP_NAME}" \
+            "https://api.github.com/${OWNER_SCOPE}/${OWNER}/packages/generic/${PACKAGE_NAME}/${VERSION}/${ZIP_NAME}"
