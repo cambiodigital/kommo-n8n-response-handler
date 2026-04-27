@@ -16,7 +16,7 @@ permissions:
 
 env:
   PACKAGE_NAME: kommo-widget
-  OWNER_SCOPE: orgs
+  OWNER_SCOPE: users
 
 jobs:
   publish:
