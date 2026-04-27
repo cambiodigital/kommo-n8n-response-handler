@@ -1,11 +1,11 @@
 {
   "widget": {
-    "name": "AI Connector",
-    "short_description": "Automatic AI responses",
-    "description": "Sends AI-generated messages through the Salesbot"
+    "name": "Kommo Response Handler",
+    "short_description": "Automatic responses with n8n",
+    "description": "Sends and receives Salesbot responses through an n8n webhook"
   },
   "salesbot": {
-    "conexion_ia": "Send to AI",
-    "url": "n8n webhook URL"
+    "send_to_n8n": "Send to n8n",
+    "url": "n8n Webhook URL"
   }
 }

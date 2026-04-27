@@ -16,8 +16,8 @@
   "locations": ["salesbot_designer"],
   "salesbot_designer": {
     "logo": "/images/logo_min.png",
-    "conexion_ia": {
-      "name": "salesbot.conexion_ia",
+    "send_to_n8n": {
+      "name": "salesbot.send_to_n8n",
       "settings": {
         "url": {
           "name": "salesbot.url",
