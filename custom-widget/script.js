@@ -1,21 +1,21 @@
 define(['jquery'], function($) {
   return function CustomWidget() {
-    let _this = this;
+    var _this = this;
 
     _this.callbacks = {
       render: function() { return true; },
       init: function() { return true; },
       bind_actions: function() { return true; },
-      destroy: function() {},
+      destroy: function() { return true; },
 
       onSalesbotDesignerSave: function(handler_code, params) {
-        const url = (params && params.url) ? params.url.trim() : '';
+        var url = (params && params.url) ? String(params.url).trim() : '';
 
         if (!url || url === 'https://') {
           return JSON.stringify([]);
         }
 
-        const step = {
+        var step = {
           question: [
             {
               handler: 'widget_request',

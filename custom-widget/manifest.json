@@ -7,20 +7,13 @@
     "interface_version": 2,
     "init_once": true,
     "locale": ["es", "en"],
-    "installation": true,
+    "installation": false,
     "support": {
       "link": "https://cambiodigital.net",
       "email": "soporte@cambiodigital.net"
     }
   },
-  "locations": ["salesbot_designer", "settings"],
-  "settings": {
-    "custom": {
-      "name": "settings.custom",
-      "type": "custom",
-      "required": false
-    }
-  },
+  "locations": ["salesbot_designer"],
   "salesbot_designer": {
     "logo": "/images/logo_min.png",
     "conexion_ia": {

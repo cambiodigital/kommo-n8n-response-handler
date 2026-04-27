@@ -4,9 +4,6 @@
     "short_description": "Automatic AI responses",
     "description": "Sends AI-generated messages through the Salesbot"
   },
-  "settings": {
-    "custom": "Settings"
-  },
   "salesbot": {
     "conexion_ia": "Send to AI",
     "url": "n8n webhook URL"
