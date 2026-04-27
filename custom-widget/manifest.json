@@ -1,0 +1,38 @@
+{
+  "widget": {
+    "name": "widget.name",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
+    "version": "1.0.0",
+    "interface_version": 2,
+    "init_once": true,
+    "locale": ["es", "en"],
+    "installation": true,
+    "support": {
+      "link": "https://cambiodigital.net",
+      "email": "soporte@cambiodigital.net"
+    }
+  },
+  "locations": ["salesbot_designer", "settings"],
+  "settings": {
+    "custom": {
+      "name": "settings.custom",
+      "type": "custom",
+      "required": false
+    }
+  },
+  "salesbot_designer": {
+    "logo": "/images/logo_min.png",
+    "conexion_ia": {
+      "name": "salesbot.conexion_ia",
+      "settings": {
+        "url": {
+          "name": "salesbot.url",
+          "default_value": "https://",
+          "type": "url",
+          "manual": true
+        }
+      }
+    }
+  }
+}
