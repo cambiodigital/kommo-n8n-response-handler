@@ -8,6 +8,7 @@
     "init_once": true,
     "locale": ["es", "en"],
     "installation": true,
+    "settings": {},
     "support": {
       "link": "https://cambiodigital.net",
       "email": "soporte@cambiodigital.net"
