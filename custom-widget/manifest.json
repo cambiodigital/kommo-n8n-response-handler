@@ -7,7 +7,7 @@
     "interface_version": 2,
     "init_once": true,
     "locale": ["es", "en"],
-    "installation": false,
+    "installation": true,
     "support": {
       "link": "https://cambiodigital.net",
       "email": "soporte@cambiodigital.net"
