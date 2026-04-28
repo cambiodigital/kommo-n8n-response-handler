@@ -8,12 +8,12 @@
     "init_once": true,
     "locale": ["es", "en"],
     "installation": true,
-    "settings": {},
     "support": {
       "link": "https://cambiodigital.net",
       "email": "soporte@cambiodigital.net"
     }
   },
+  "settings": {},
   "locations": ["salesbot_designer"],
   "salesbot_designer": {
     "logo": "/images/logo_min.png",
