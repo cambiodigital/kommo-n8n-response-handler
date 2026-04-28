@@ -1,0 +1,176 @@
+{
+  "0": {
+    "block_uuid": "fddfa880-3cef-4d86-afb9-e6ac7c4f7b3f",
+    "question": [
+      {
+        "handler": "widget",
+        "params": {
+          "widget_id": "1238527",
+          "widget_source_code": "send_to_n8n",
+          "params": {
+            "url": "https://cd-n8n.nxfcjt.easypanel.host/webhook/ede8d89c-93eb-4e56-ba7f-a5de4d4634b5",
+            "value_manual": "https://cd-n8n.nxfcjt.easypanel.host/webhook/ede8d89c-93eb-4e56-ba7f-a5de4d4634b5"
+          },
+          "widget_instance_id": "6005ef16-430e-11f1-b9b0-00163e9b25c2"
+        }
+      },
+      {
+        "handler": "goto",
+        "params": {
+          "type": "question",
+          "step": 1
+        }
+      }
+    ]
+  },
+  "1": {
+    "block_uuid": "b1960d68-497b-4c20-a429-740f5f61e9fc",
+    "question": [
+      {
+        "handler": "send_message",
+        "params": {
+          "type": "external",
+          "text": "{{json.msg1}}",
+          "tag": "",
+          "send_to_all_chat_sources": true,
+          "recipient": {
+            "type": "all_contacts",
+            "way_of_communication": "over_all"
+          },
+          "is_in_starting_block": true,
+          "on_error": null
+        }
+      },
+      {
+        "handler": "goto",
+        "params": {
+          "type": "question",
+          "step": 2
+        }
+      }
+    ]
+  },
+  "2": {
+    "block_uuid": "1bae791c-5139-49eb-a562-53170523c452",
+    "question": [
+      {
+        "handler": "waits",
+        "params": {
+          "logic": "or",
+          "conditions": [
+            {
+              "event": {
+                "source": "timer",
+                "action": "ended",
+                "delay": 2
+              },
+              "action": {
+                "type": "question",
+                "step": 3
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "3": {
+    "block_uuid": "872d4da2-fb16-4672-842c-1806f16465b2",
+    "question": [
+      {
+        "handler": "condition",
+        "params": {
+          "term1": "{{json.msg2}}",
+          "term2": "__EMPTY__",
+          "result": [
+            {
+              "handler": "send_message",
+              "params": {
+                "type": "external",
+                "text": "{{json.msg2}}",
+                "tag": "",
+                "send_to_all_chat_sources": true,
+                "recipient": {
+                  "type": "all_contacts",
+                  "way_of_communication": "over_all"
+                },
+                "is_in_starting_block": true,
+                "on_error": null
+              }
+            }
+          ],
+          "operation": "!="
+        }
+      },
+      {
+        "handler": "goto",
+        "params": {
+          "type": "question",
+          "step": 4
+        }
+      }
+    ]
+  },
+  "4": {
+    "block_uuid": "eb8e4b16-5e4b-485b-9969-22a94a4aea77",
+    "question": [
+      {
+        "handler": "waits",
+        "params": {
+          "logic": "or",
+          "conditions": [
+            {
+              "event": {
+                "source": "timer",
+                "action": "ended",
+                "delay": 2
+              },
+              "action": {
+                "type": "question",
+                "step": 5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "5": {
+    "block_uuid": "b5f67103-5f49-4ee2-a4e5-b393c9546e83",
+    "question": [
+      {
+        "handler": "condition",
+        "params": {
+          "term1": "{{json.msg3}}",
+          "term2": "__EMPTY__",
+          "result": [
+            {
+              "handler": "send_message",
+              "params": {
+                "type": "external",
+                "text": "{{json.msg3}}",
+                "tag": "",
+                "send_to_all_chat_sources": true,
+                "recipient": {
+                  "type": "all_contacts",
+                  "way_of_communication": "over_all"
+                },
+                "is_in_starting_block": true,
+                "on_error": null
+              }
+            }
+          ],
+          "operation": "!="
+        }
+      },
+      {
+        "handler": "goto",
+        "params": {
+          "type": "finish",
+          "step": 6
+        }
+      }
+    ]
+  },
+  "conversation": false
+}
