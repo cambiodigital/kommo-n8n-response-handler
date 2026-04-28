@@ -4,6 +4,9 @@
     "short_description": "Automatic responses with n8n",
     "description": "Sends and receives Salesbot responses through an n8n webhook"
   },
+  "settings": {
+    "webhook_url": "Global n8n webhook URL"
+  },
   "salesbot": {
     "send_to_n8n": "Send to n8n",
     "url": "n8n Webhook URL"

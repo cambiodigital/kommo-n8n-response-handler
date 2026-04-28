@@ -3,7 +3,7 @@
     "name": "widget.name",
     "description": "widget.description",
     "short_description": "widget.short_description",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "interface_version": 2,
     "init_once": true,
     "locale": ["es", "en"],
@@ -13,8 +13,14 @@
       "email": "soporte@cambiodigital.net"
     }
   },
-  "settings": {},
-  "locations": ["salesbot_designer"],
+  "settings": {
+    "webhook_url": {
+      "name": "settings.webhook_url",
+      "type": "text",
+      "required": true
+    }
+  },
+  "locations": ["settings", "salesbot_designer"],
   "salesbot_designer": {
     "logo": "/images/logo_min.png",
     "send_to_n8n": {

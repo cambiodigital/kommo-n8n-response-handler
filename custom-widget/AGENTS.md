@@ -4,9 +4,11 @@ Este repositorio contiene un widget personalizado para **Kommo CRM**, desarrolla
 
 ## Contexto del proyecto
 
-- El widget se integra en el **Salesbot Designer** de Kommo.
+- El widget se integra en el **Salesbot Designer** de Kommo y en la pantalla de **settings** para su instalacion.
 - Permite enviar mensajes generados por IA a un webhook externo (n8n), pasando datos del contacto, lead y conversación.
 - Está diseñado para ser reutilizado en múltiples clientes, por lo que debe mantenerse genérico.
+- La configuracion global actual del widget incluye un campo instalable `webhook_url`.
+- En el bloque de Salesbot, la URL puede venir del handler del bot o caer al valor global configurado en la instalacion.
 
 ## Estructura
 
@@ -19,6 +21,21 @@ custom-widget/
 │   └── en.json         # Traducciones en inglés
 └── images/             # Logos del widget en distintos tamaños
 ```
+
+## Estado actual del widget
+
+- `manifest.json` usa `installation: true`.
+- `locations` incluye `settings` y `salesbot_designer`.
+- `settings.webhook_url` es obligatorio para la instalacion.
+- `salesbot_designer.send_to_n8n.settings.url` permite sobreescribir la URL global por bloque.
+- `script.js` implementa los callbacks minimos `render`, `init`, `bind_actions`, `settings`, `onSave` y `destroy`.
+
+## Notas importantes para cambios futuros
+
+- Si `installation` permanece en `true`, el bloque `settings` no puede estar vacio.
+- El archivo ZIP del widget debe contener `manifest.json`, `script.js`, `i18n/` e `images/` en la raiz del archivo, no dentro de una carpeta contenedora adicional.
+- Las imagenes obligatorias del widget deben mantenerse en `images/`: `logo.png`, `logo_main.png`, `logo_small.png`, `logo_min.png`, `logo_medium.png`; `logo_dp.png` solo es relevante para Digital Pipeline.
+- Si se cambia la estructura de `manifest.json` de forma incompatible en una primera carga fallida, Kommo puede requerir regenerar `code` y `key` de la integracion.
 
 ## Documentación de referencia — Kommo for Developers
 
